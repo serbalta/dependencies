@@ -5,6 +5,7 @@ import com.swe.customer.entity.Customer;
 import com.swe.customer.repo.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -15,4 +16,14 @@ public class CustomerService {
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
+
+    public  Customer update(Customer customer){
+        return customerRepository.save(customer);
+    }
+
+    public Customer insertCustomer(Customer customer){
+        return customerRepository.save(customer);
+    }
+
+
 }
