@@ -27,10 +27,14 @@ public class CustomerApplication {
 	}
 	List<Product> products = new ArrayList<Product>();
 
+
 	@Bean
 	CommandLineRunner runner(CustomerRepository repository, MongoTemplate mongoTemplate)
 	{
 		return args ->{
+
+
+
 			Adress adress = new Adress(
 					"Turkei",
 					"Yalova",
@@ -44,10 +48,13 @@ public class CustomerApplication {
 					"se22m061@tecknikum-wien.at",
 					Gender.MALE,
 					adress,
-					List.of("deneme"),
-					BigDecimal.TEN
+					products,
+					10
 
 			);
+
+
+
 
 			Query query = new Query();
 			query.addCriteria(Criteria.where("email").exists(true));
@@ -65,6 +72,11 @@ public class CustomerApplication {
 			}
 
 		};
+
 	}
+
+
+
+
 
 }
