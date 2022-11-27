@@ -10,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.List;
 
@@ -24,14 +23,15 @@ public class CustomerApplication {
     }
 
 
-
     @Bean
-    CommandLineRunner runner(ProductRepository productRepo, CustomerRepository repository, MongoTemplate mongoTemplate) {
+    CommandLineRunner runner(ProductRepository productRepo, CustomerRepository repository) {
         return args -> {
 
             Product product = new Product("1", "Apple", 147, 10);
             Product product2 = new Product("2", "Samsung", 100, 10);
 
+            productRepo.insert(product);
+            productRepo.insert(product2);
             productRepo.insert(product);
             productRepo.insert(product2);
 
@@ -89,10 +89,8 @@ public class CustomerApplication {
                 if (repository.findByEmail(c.getEmail()) == null) {
                     repository.insert(c);
                 } else {
-
                     System.out.println("Already exist");
                 }
-
             }
         }
     }
