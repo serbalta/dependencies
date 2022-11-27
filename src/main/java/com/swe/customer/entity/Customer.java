@@ -31,7 +31,9 @@ public class Customer {
     @NonNull
     private List<Product> products;
     @NonNull
-    private int totalPrice;
+    private int totalBalance;
+
+
 
 
 

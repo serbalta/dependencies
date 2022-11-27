@@ -1,16 +1,17 @@
 package com.swe.customer.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document
+@AllArgsConstructor
 public class Product {
-    @Id
+
     private String code;
     private String name;
-    private int balance;
+    int balance;
     private int interestRate;
 
 
