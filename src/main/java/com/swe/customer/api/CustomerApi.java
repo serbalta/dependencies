@@ -2,6 +2,7 @@ package com.swe.customer.api;
 
 import com.swe.customer.CustomerApplication;
 import com.swe.customer.entity.Customer;
+import com.swe.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,13 @@ import java.util.List;
 @RequestMapping("customers")
 @AllArgsConstructor
 public class CustomerApi {
-    private final CustomerApi customerApi;
+    private final CustomerService customerService;
 
     @GetMapping
     public List<Customer> fetchAllCustomers(){
-        return customerApi.getAllCustomers();
+        return customerService.getAllCustomers();
     }
+
 
 
 
