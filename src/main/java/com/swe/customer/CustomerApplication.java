@@ -5,6 +5,7 @@ import com.swe.customer.entity.Customer;
 import com.swe.customer.entity.Gender;
 import com.swe.customer.entity.Product;
 import com.swe.customer.repo.CustomerRepository;
+import com.swe.customer.repo.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +14,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +29,13 @@ public class CustomerApplication {
 
 
 	@Bean
-	CommandLineRunner runner(CustomerRepository repository, MongoTemplate mongoTemplate)
+	CommandLineRunner runner(ProductRepository productRepo, CustomerRepository repository, MongoTemplate mongoTemplate)
 	{
 		return args ->{
+
+			Product product = new Product("apple" , 3 ,10);
+
+
 
 
 
@@ -49,8 +53,7 @@ public class CustomerApplication {
 					Gender.MALE,
 					adress,
 					products,
-					10
-
+					123
 			);
 
 
@@ -71,12 +74,9 @@ public class CustomerApplication {
 				System.out.println(customer + " Already exist");
 			}
 
+			productRepo.insert(product);
 		};
 
 	}
-
-
-
-
 
 }
