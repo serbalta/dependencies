@@ -6,6 +6,6 @@ spring:
       password: root
       database: swe
       port: 27017
-      host: localhost
+      host: host.docker.internal
       auto-index-creation: true
 
